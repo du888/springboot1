@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.op.mapper.UserMapper">
+<select id="getUpwd" resultType="java.lang.String">
+    select upwd from user WHERE uname=#{uname}
+</select>
+    <select id="getRole" resultType="java.lang.String">
+        select role from user where uname#{uname}
+    </select>
+    <insert id="addUser" parameterType="user">
+        insert into user(uname,upwd,role) values (#{uname},#{upwd},#{role})
+    </insert>
+    <delete id="deleteUser" parameterType="int">
+        delete from user where uid=#{uid}
+    </delete>
+    <select id="getUser" resultType="user">
+        select * from user where uid=#{uid}
+    </select>
+    <update id="updateUser" parameterType="user">
+        update user set uname=#{uname},upwd=#{upwd},role=#{role} where uid=#{uid}
+    </update>
+    <select id="getUserList" resultType="user">
+        select * from user
+    </select>
+</mapper>
